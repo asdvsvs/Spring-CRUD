@@ -31,12 +31,12 @@ public class WritingController {
     }
 
     @PutMapping("/writing")
-    public Long updateWriting(Long id, @RequestBody WritingRequestDto writingRequestDto) {
+    public WritingResponseDto updateWriting(Long id, @RequestBody WritingRequestDto writingRequestDto) {
         return writingService.updateWriting(id,writingRequestDto);
     }
 
     @DeleteMapping("/writing")
-    public Long deleteWriting(Long id) {
-        return writingService.deleteWriting(id);
+    public Long deleteWriting(Long id,String passWord) {
+        return writingService.deleteWriting(id,passWord);
     }
 }
