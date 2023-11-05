@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Writing extends Timestamped {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +25,16 @@ public class Writing extends Timestamped {
     private String contents;
 
     public Writing(WritingRequestDto writingRequestDto) {
-        this.title = title;
-        this.author = author;
-        this.passWord = passWord;
-        this.contents = contents;
+        this.title = writingRequestDto.getTitle();
+        this.author = writingRequestDto.getAuthor();
+        this.passWord = writingRequestDto.getPassWord();
+        this.contents = writingRequestDto.getContents();
+    }
+
+    public void update(WritingRequestDto writingRequestDto) {
+        this.title = writingRequestDto.getTitle();
+        this.author = writingRequestDto.getAuthor();
+        this.passWord = writingRequestDto.getPassWord();
+        this.contents = writingRequestDto.getContents();
     }
 }
