@@ -3,6 +3,7 @@ package com.sparta.springcrud.Entity;
 import com.sparta.springcrud.dto.WritingRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -24,6 +25,15 @@ public class Writing extends Timestamped {
     @Column(name = "contents", nullable = false, length = 500)
     private String contents;
 
+    @Builder
+    public Writing(Long id, String title, String author, String passWord, String contents) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.passWord = passWord;
+        this.contents = contents;
+    }
+
     public Writing(WritingRequestDto writingRequestDto) {
         this.title = writingRequestDto.getTitle();
         this.author = writingRequestDto.getAuthor();
@@ -37,4 +47,5 @@ public class Writing extends Timestamped {
         this.passWord = writingRequestDto.getPassWord();
         this.contents = writingRequestDto.getContents();
     }
+
 }
