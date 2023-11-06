@@ -25,7 +25,7 @@ public class WritingController {
         return writingService.getWriting(id);
     }
 
-    @GetMapping("/getList")
+    @GetMapping("/writings")
     public List<WritingResponseDto> getWritingList() {
         return writingService.getWritingList();
     }
